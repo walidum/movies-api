@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-
+const api = require('./routes/api')
 //express rendre les api disponible
 const app = express();
 
@@ -17,6 +17,7 @@ app.options('*', cors());
 //path permet de partager des fichiers dans le backend
 app.use(express.static(path.join(__dirname, 'public')));
 
-//ppour lancer le backend
+app.use('',api)
+//pour lancer le backend
 const port = 3001
 app.listen(port, () => console.log(`app listening on port ${port}!`))
