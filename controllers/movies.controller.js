@@ -5,4 +5,5 @@ module.exports.HELLO = (req,res)=>{
 
 module.exports.SEND_DATA = (req,res)=>{
     console.log(req.body)
+    res.send('OK!')
 }
