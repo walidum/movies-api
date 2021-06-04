@@ -12,7 +12,7 @@ module.exports.SEND_DATA = (req, res) => {
 module.exports.ADD_MOVIE = (req, res) => {
     console.log(req.body)
     const movie = new Movie(req.body)
-    movie.save(req.body)
+    movie.save()
         .then(ok => {
             res.send('OK')
         })
@@ -31,7 +31,19 @@ module.exports.ALL_MOVIES = (req, res) => {
         })
 }
 module.exports.EDIT_MOVIE = (req, res) => {
-
+    const id = req.body._id
+    if (!id) return res.send('NO ID')
+    Movie.findByIdAndUpdate(id, {
+        title: req.body.title,
+        description: req.body.description,
+        rating: req.body.rating
+    })
+        .then(ok => {
+            res.send('OK')
+        })
+        .catch(err => {
+            res.send('NOt OK')
+        })
 }
 module.exports.DELETE_MOVIE = (req, res) => {
 
