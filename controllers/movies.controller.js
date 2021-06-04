@@ -46,5 +46,13 @@ module.exports.EDIT_MOVIE = (req, res) => {
         })
 }
 module.exports.DELETE_MOVIE = (req, res) => {
-
+    const id = req.body._id
+    if (!id) return res.send('NO ID')
+    Movie.findByIdAndDelete(id)
+        .then(ok => {
+            res.send('OK')
+        })
+        .catch(err => {
+            res.send('NOt OK')
+        })
 }
