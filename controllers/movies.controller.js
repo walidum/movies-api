@@ -22,7 +22,13 @@ module.exports.ADD_MOVIE = (req, res) => {
         })
 }
 module.exports.ALL_MOVIES = (req, res) => {
-
+    Movie.find()
+        .then(movies => {
+            res.send(movies)
+        })
+        .catch(err => {
+            res.send('NOT OK')
+        })
 }
 module.exports.EDIT_MOVIE = (req, res) => {
 
