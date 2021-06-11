@@ -1,4 +1,5 @@
 const express = require('express')
+const {LOGIN} = require("../controllers/users.controller");
 const {ALLUSERS} = require("../controllers/users.controller");
 const router = express.Router()
 const {
@@ -16,5 +17,6 @@ router.put('/edit', EDIT_MOVIE)
 router.post('/delete', DELETE_MOVIE)
 
 router.post('/register', REGISTER)
+router.post('/login', LOGIN)
 router.get('/allusers', ALLUSERS)
 module.exports = router;

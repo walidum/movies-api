@@ -9,6 +9,19 @@ module.exports.REGISTER = (req, res) => {
             res.send('ERR')
         })
 }
+module.exports.LOGIN = async (req, res) => {
+    console.log(req.body)
+    if (!req.body.email) {
+        return res.send({error: true, msg: 'email required'})
+    }
+    if (!req.body.password) {
+        return res.send({error: true, msg: 'password required'})
+    }
+    const user = await User.findOne({email: req.body.email}).exec()
+    if (!user) res.send({error: true, msg: 'email invalid'})
+    if (user.password !== req.body.password) res.send({error: true, msg: 'passorwd invalid'})
+    res.send({error: false, msg: 'OK'})
+}
 module.exports.ALLUSERS = (req, res) => {
     User.find()
         .then(u => {
