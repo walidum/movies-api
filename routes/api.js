@@ -9,4 +9,6 @@ router.post('/add', ADD_MOVIE)
 router.get('/all', ALL_MOVIES)
 router.put('/edit', EDIT_MOVIE)
 router.post('/delete', DELETE_MOVIE)
+
+router.post('/register', REGISTER)
 module.exports = router;
