@@ -1,6 +1,11 @@
 const express = require('express')
+const {ALLUSERS} = require("../controllers/users.controller");
 const router = express.Router()
-const {HELLO, SEND_DATA, ADD_MOVIE, ALL_MOVIES, EDIT_MOVIE, DELETE_MOVIE} = require("../controllers/movies.controller");
+const {
+    HELLO, SEND_DATA, ADD_MOVIE, ALL_MOVIES,
+    EDIT_MOVIE, DELETE_MOVIE
+} = require("../controllers/movies.controller");
+const {REGISTER} = require("../controllers/users.controller");
 
 
 router.get('/hello', HELLO)
@@ -11,4 +16,5 @@ router.put('/edit', EDIT_MOVIE)
 router.post('/delete', DELETE_MOVIE)
 
 router.post('/register', REGISTER)
+router.get('/allusers', ALLUSERS)
 module.exports = router;
